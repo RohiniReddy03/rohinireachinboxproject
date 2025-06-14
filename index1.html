@@ -28,7 +28,6 @@
             margin-bottom: 30px;
             color: #00cec9;
         }
-        
         .form-group {
             margin-bottom: 15px;
         }
@@ -55,14 +54,15 @@
         }
         .row {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-
         .col-half {
-            width: 48%;
+            flex: 1;
             background: #34495e;
             padding: 30px;
-            border-radius: 40px;
+            border-radius: 20px;
+            min-width: 300px;
         }
         .search-label {
             margin-bottom: 5px;
@@ -74,40 +74,40 @@
 <body>
     <div class="container">
         <div class="row">
+            <!-- Email Sending Section -->
             <div class="col-half">
                 <h2>Email Portal</h2>
-                <!-- Email Form -->
                 <form action="{{ url_for('send_email') }}" method="post">
                     <div class="form-group">
-                        <label>Recipient Email</label>
-                        <input type="email" class="form-control" name="recipient_email" required>
+                        <label for="recipient">Recipient Email</label>
+                        <input type="email" class="form-control" name="recipient_email" id="recipient" required>
                     </div>
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control" name="subject" required>
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" name="subject" id="subject" required>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" name="message" rows="6" required></textarea>
+                        <label for="message">Message</label>
+                        <textarea class="form-control" name="message" id="message" rows="6" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-custom">Send Message</button>
                 </form>
             </div>
-            <div class="col-half">
 
+            <!-- Email History Section -->
+            <div class="col-half">
                 <h2>Email History</h2>
-                <!-- Search Bar -->
                 <form method="GET" action="/" class="mb-5">
                     <label class="search-label">Search Email</label>
                     <input type="text" name="search" class="form-control" placeholder="Type Here">
                     <button type="submit" class="btn btn-info mt-3 w-100">Find</button>
                 </form>
-                <!-- Email History Table -->
+
                 <div class="table-responsive">
                     <table class="table table-dark table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>From</th>                        
+                                <th>From</th>
                                 <th>To</th>
                                 <th>Subject</th>
                                 <th>Content</th>
@@ -115,16 +115,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                         
                             <tr>
-                                <center>History Table</center>
-                                <td>  sender</td>
-                                <td>  Recipient </td>
-                                <td>  Subject </td>
-                                <td>  Message </td>
-                                <td>  Time</td>
+                                <td>sender@example.com</td>
+                                <td>recipient@example.com</td>
+                                <td>Hello</td>
+                                <td>Welcome to the portal</td>
+                                <td>2025-06-14 10:30 AM</td>
                             </tr>
-                           
+                            <!-- Add more rows dynamically here -->
                         </tbody>
                     </table>
                 </div>
